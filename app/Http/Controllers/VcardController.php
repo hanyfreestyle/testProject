@@ -45,7 +45,12 @@ class VcardController extends Controller {
         //return $vcard->getOutput();
 
         // return vcard as a download
-        return $vcard->download();
+//        return $vcard->download();
+        return response($vcard->getOutput(), 200, [
+            'Content-Type' => 'text/vcard',
+            'Content-Disposition' => 'attachment; filename="contact.vcf"',
+        ]);
+
     }
 
 }
