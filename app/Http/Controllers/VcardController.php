@@ -40,7 +40,7 @@ class VcardController extends Controller {
         $vcard->addLabel('street, worktown, workpostcode Belgium');
         $vcard->addURL('http://www.jeroendesloovere.be');
 
-//        $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+        $vcard->addPhoto( 'https://profilehub.me/images/card/card_1734524219.webp');
 
         // return vcard as a string
         //return $vcard->getOutput();
