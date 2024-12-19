@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use JeroenDesloovere\VCard\VCard;
 
 class VcardController extends Controller {
@@ -46,11 +47,16 @@ class VcardController extends Controller {
 
         // return vcard as a download
 //        return $vcard->download();
-        return response($vcard->getOutput(), 200, [
-            'Content-Type' => 'text/vcard',
-            'Content-Disposition' => 'attachment; filename="contact.vcf"',
-        ]);
+//        return response($vcard->getOutput(), 200, [
+//            'Content-Type' => 'text/vcard',
+//            'Content-Disposition' => 'attachment; filename="contact.vcf"',
+//        ]);
 
+        return Response::make(
+            $vcard->getOutput(),
+            200,
+            $vcard->getHeaders(true)
+        );
     }
 
 }
